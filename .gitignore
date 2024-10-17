@@ -4,8 +4,7 @@ venv/
 *.env
 
 # Data files
-*.csv
-*seed_data.sql
+data/
 
 # Testing files
 test/
