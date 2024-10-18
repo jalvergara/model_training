@@ -12,6 +12,23 @@ The dataset contains 94,247 entries and 25 columns, with a mix of numeric, boole
 - **Categorical columns**: Include features like `buying_mode`, `status`, and `shipping_mode`.
 - **Boolean columns**: For example, `warranty`, `accepts_mercadopago`, and `automatic_relist`.
 
+We performed several important transformations on the dataset to prepare it for analysis and modeling, some of these were:
+
+1. **Data Cleaning**: We removed unnecessary columns and handled missing values, filling them with appropriate substitutes (e.g., filling `original_price` with `price`).
+
+2. **Feature Engineering**: We extracted and computed new features such as:
+   - Calculating pixel dimensions for images (`pixeles` and `pixeles_max`).
+   - Counting the number of non-Mercado Pago payment methods.
+   - Calculating the number of days items were active and days since the last update.
+
+3. **Data Type Conversion**: We converted certain columns to numeric types and coerced errors to NaN, ensuring proper handling of geographic coordinates and pixel dimensions.
+
+4. **Boolean Transformations**: We transformed columns like `warranty`, `seller_contact`, `tags`, and `variations` into boolean values to simplify analysis.
+
+5. **Status Normalization**: The `status` column was standardized to either "active" or "no_active" for clarity.
+
+These transformations enhance the dataset's quality and usability, making it more suitable for exploratory analysis and predictive modeling.
+
 ## Data Preprocessing
 
 ### 1. Checking Data Types and Distribution
