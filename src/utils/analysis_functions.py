@@ -20,24 +20,27 @@ def summary_by_columns(df):
     # Create an empty DataFrame to store the summary
     summary_df = pd.DataFrame(columns=['Column', 'Data Type', 'Missing Values', 'Unique Values', 'Duplicates'])
     
-    # Loop through each column in the DataFrame
-    for col in df.columns:
-        data_type = df[col].dtype
-        missing_values = df[col].isna().sum()
-        num_unique_values = df[col].nunique()
-        num_duplicates = df[col].duplicated().sum()
-        
-        # Add the results to the summary DataFrame
-        row_summary = pd.DataFrame({
-            'Column': [col],
-            'Data Type': [data_type],
-            'Missing Values': [missing_values],
-            'Unique Values': [num_unique_values],
-            'Duplicates': [num_duplicates],
-            'Missing Values (%)': [round((missing_values / df.shape[0]) * 100, 2)]
-        })
-        
-        # Concatenate the row summary to the summary DataFrame
-        summary_df = pd.concat([summary_df, row_summary], ignore_index=True)
-    
-    return summary_df
+    try:
+        # Loop through each column in the DataFrame
+        for col in df.columns:
+            data_type = df[col].dtype
+            missing_values = df[col].isna().sum()
+            num_unique_values = df[col].nunique()
+            num_duplicates = df[col].duplicated().sum()
+            
+            # Add the results to the summary DataFrame
+            
+            row_summary = pd.DataFrame({
+                'Column': [col],
+                'Data Type': [data_type],
+                'Missing Values': [missing_values],
+                'Unique Values': [num_unique_values],
+                'Duplicates': [num_duplicates],
+                'Missing Values (%)': [round((missing_values / df.shape[0]) * 100, 2)]
+            })
+            
+            # Concatenate the row summary to the summary DataFrame
+            summary_df = pd.concat([summary_df, row_summary], ignore_index=True)
+        return summary_df
+    except Exception as e:
+        print(f"An error occurred: {e}. In the column: {col}")
