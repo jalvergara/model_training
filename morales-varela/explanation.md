@@ -12,7 +12,8 @@ The dataset contains 94,247 entries and 25 columns, with a mix of numeric, boole
 - **Categorical columns**: Include features like `buying_mode`, `status`, and `shipping_mode`.
 - **Boolean columns**: For example, `warranty`, `accepts_mercadopago`, and `automatic_relist`.
 
-We performed several important transformations on the dataset to prepare it for analysis and modeling, some of these were:
+
+This was the case because, previously in the EDA, we performed several important transformations on the dataset to prepare it for analysis and modeling. Some of these included:
 
 1. **Data Cleaning**: We removed unnecessary columns and handled missing values, filling them with appropriate substitutes (e.g., filling `original_price` with `price`).
 
