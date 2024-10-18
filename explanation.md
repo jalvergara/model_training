@@ -24,22 +24,22 @@ Para entrenar el modelo de predicción de si un artículo en el marketplace es n
 Después de entrenar y evaluar los modelos, se obtuvieron los siguientes resultados:
 
 - **Regresión Logística**:
-    - Precisión: 0.85
-    - Precisión: 0.84
-    - Recall: 0.86
-    - Puntuación F1: 0.85
+    - Accuracy: 0.71
+    - Precisión: 0.69
+    - Recall: 0.67
+    - Puntuación F1: 0.68
 
 - **Clasificador de Bosques Aleatorios**:
-    - Precisión: 0.88
-    - Precisión: 0.87
-    - Recall: 0.89
-    - Puntuación F1: 0.88
+    - Accuracy: 0.82
+    - Precisión: 0.77
+    - Recall: 0.86
+    - Puntuación F1: 0.82
 
 - **Árbol de Decisión**:
-    - Precisión: 0.82
-    - Precisión: 0.81
-    - Recall: 0.83
-    - Puntuación F1: 0.82
+    - Accuracy: 0.82
+    - Precisión: 0.77
+    - Recall: 0.85
+    - Puntuación F1: 0.81
 
 El modelo seleccionado para la entrega final fue el **Clasificador de Bosques Aleatorios** debido a su mejor rendimiento en las métricas evaluadas.
 
