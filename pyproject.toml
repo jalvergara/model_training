@@ -2,7 +2,7 @@
 name = "model-training"
 version = "0.1.0"
 description = ""
-authors = ["santiago-04 <santiago.gomez.castro.04@gmial.com>"]
+authors = ["2004santiago", "mitgar14"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
