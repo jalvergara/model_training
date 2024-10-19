@@ -27,13 +27,25 @@ El modelo fue entrenado utilizando los siguientes pasos:
 
 4. **Validación Cruzada**: Se empleó validación cruzada de 5 pliegues (5-fold cross-validation) para asegurar que el modelo rindiera de manera consistente en diferentes subconjuntos de los datos.
 
-## 5. Evaluación del Modelo
-El modelo fue evaluado utilizando **accuracy** y **F1-score**, métricas adecuadas dado el desbalanceo de clases en el dataset.
+5. **Resultados del Modelo: Random Forest**
 
-### Resultados:
-- **Precisión (Accuracy)**: 92.5%
-- **F1-score**: 0.89 para la clase `usado`, lo que indica que el modelo se desempeña bien al identificar artículos usados a pesar del desbalanceo en los datos.
+El modelo de **Random Forest** fue evaluado utilizando diversas métricas de rendimiento, con los siguientes resultados:
+
+- **Accuracy**: 0.8385
+- **Precision**: 0.7933
+- **Recall**: 0.8788
+- **F1-Score**: 0.8339
+- **ROC-AUC**: 0.9149
+
+### Interpretación:
+- El modelo tiene una **precisión** general del 83.85%, lo que significa que en promedio, clasifica correctamente el 83.85% de los casos.
+- La **precisión** de 0.7933 indica que, de los artículos que el modelo predice como usados, el 79.33% son correctos.
+- El **recall** de 0.8788 muestra que el modelo identifica correctamente el 87.88% de los artículos usados.
+- El **F1-score** de 0.8339 indica un buen equilibrio entre precisión y recall.
+- El **ROC-AUC** de 0.9149 sugiere que el modelo tiene una alta capacidad para distinguir entre clases (nuevo vs usado).
+
+Estos resultados indican que el modelo es efectivo, aunque puede haber margen para mejorar la precisión sin sacrificar demasiado el recall.
 
 ## 6. Conclusión
-El modelo de Random Forest tuvo un buen desempeño en la tarea de predecir si un artículo es nuevo o usado. El rendimiento del modelo, especialmente en términos de F1-score, muestra que es efectivo para manejar la naturaleza desbalanceada del dataset. Las mejoras futuras podrían incluir probar otros algoritmos como Gradient Boosting o balancear el dataset utilizando técnicas como SMOTE.
+El modelo de Random Forest tuvo un buen desempeño en la tarea de predecir si un artículo es nuevo o usado. El rendimiento del modelo, especialmente en términos de ROC-AUC, muestra que es efectivo para manejar la naturaleza desbalanceada del dataset. Las mejoras futuras podrían incluir probar otros algoritmos como Gradient Boosting o balancear el dataset utilizando técnicas como SMOTE.
 
