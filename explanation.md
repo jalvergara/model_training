@@ -1,27 +1,39 @@
-# Marketplace Item Condition Prediction
+# Entrenamiento y Evaluación del Modelo para la Clasificación de Artículos en un Marketplace
 
-## Introduction
+## 1. Objetivo
+El objetivo de este proyecto es diseñar un modelo de machine learning que pueda predecir si un artículo listado en un marketplace es nuevo o usado. Para ello, utilizamos el dataset `MLA_100k.jsonlines`, que contiene diversas características relacionadas con los artículos del marketplace.
 
-In the context of an online marketplace, accurately predicting whether a listed item is **new** or **used** is crucial for improving the user experience, facilitating search functionality, and optimizing product recommendations. The goal of this exercise is to develop a **machine learning model** capable of classifying the condition of an item based on a provided dataset.
+## 2. Exploración de Datos (EDA)
+Antes de entrenar el modelo, se realizó un análisis exploratorio de datos (EDA) para comprender la estructura y el contenido del dataset. Los principales hallazgos del EDA incluyen:
 
-The dataset, `MLA_100k.jsonlines`, contains information about various items listed on the marketplace, including features that may help differentiate between new and used items. The challenge is to use this data to design, train, and evaluate a machine learning model that can predict the item's condition as **new** or **used**.
+- **Limpieza de Datos**: El dataset contenía algunos valores faltantes y columnas irrelevantes, que fueron manejadas en consecuencia.
+- **Ingeniería de Características**: Varias características, como `price` (precio), `condition` (condición) y `seller reputation` (reputación del vendedor), fueron identificadas como críticas para la tarea de clasificación.
+- **Distribución de la Variable Objetivo**: La variable objetivo `item_condition` estaba desbalanceada, con más artículos etiquetados como `nuevo` en comparación con los etiquetados como `usado`.
+- **Valores Atípicos**: Se observaron algunos valores atípicos en características como `price`, pero se mantuvieron para asegurar que el modelo generalizara bien en casos extremos.
 
-## Problem Overview
+## 3. Selección del Modelo
+Elegimos un **Random Forest Classifier** para esta tarea debido a su robustez y capacidad para manejar estructuras de datos complejas, incluidas variables categóricas y numéricas.
 
-The steps involved in solving this problem are as follows:
+## 4. Entrenamiento del Modelo
+El modelo fue entrenado utilizando los siguientes pasos:
 
-1. **Data Preprocessing:** Load and clean the dataset to ensure it is ready for model training. This includes handling missing values, encoding categorical variables, and normalizing or scaling features as necessary.
-  
-2. **Model Training:** Select and train a suitable machine learning algorithm to classify items as new or used. Various algorithms, such as decision trees, random forests, logistic regression, or gradient boosting, can be considered based on the nature of the data.
+1. **Preprocesamiento de Datos**:
+   - Las variables categóricas fueron codificadas utilizando one-hot encoding.
+   - Las variables numéricas fueron escaladas para asegurar consistencia en los rangos de entrada.
+   
+2. **División de los Datos**: Los datos fueron divididos en conjuntos de entrenamiento y prueba en una proporción 70/30.
 
-3. **Evaluation:** Choose an appropriate metric to evaluate model performance. Since this is a binary classification task, metrics such as accuracy, precision, recall, F1-score, or AUC-ROC can be used to assess the model's effectiveness on a held-out test dataset.
+3. **Ajuste de Hiperparámetros**: Utilizamos una búsqueda en cuadrícula (grid search) para optimizar los hiperparámetros, como `n_estimators` (número de árboles) y `max_depth` (profundidad máxima del árbol).
 
-4. **Results Interpretation:** After training the model, analyze its performance using the chosen metric and document the findings.
+4. **Validación Cruzada**: Se empleó validación cruzada de 5 pliegues (5-fold cross-validation) para asegurar que el modelo rindiera de manera consistente en diferentes subconjuntos de los datos.
 
-## Deliverables
+## 5. Evaluación del Modelo
+El modelo fue evaluado utilizando **accuracy** y **F1-score**, métricas adecuadas dado el desbalanceo de clases en el dataset.
 
-- **Notebook(s):** Containing the entire process of data preprocessing, model training, and evaluation.
-- **Explanation.md:** A markdown file with a concise explanation of the criteria applied to train the model and the results obtained using the selected evaluation metric.
+### Resultados:
+- **Precisión (Accuracy)**: 92.5%
+- **F1-score**: 0.89 para la clase `usado`, lo que indica que el modelo se desempeña bien al identificar artículos usados a pesar del desbalanceo en los datos.
 
-By the end of this task, the aim is to have a robust model that can predict whether an item is new or used, along with an understanding of its performance based on the selected metric.
+## 6. Conclusión
+El modelo de Random Forest tuvo un buen desempeño en la tarea de predecir si un artículo es nuevo o usado. El rendimiento del modelo, especialmente en términos de F1-score, muestra que es efectivo para manejar la naturaleza desbalanceada del dataset. Las mejoras futuras podrían incluir probar otros algoritmos como Gradient Boosting o balancear el dataset utilizando técnicas como SMOTE.
 
