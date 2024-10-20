@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "model-training"
+version = "0.1.0"
+description = ""
+authors = ["2004santiago", "mitgar14"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pandas = "^2.2.3"
+scikit-learn = "^1.5.2"
+matplotlib = "^3.9.2"
+seaborn = "^0.13.2"
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
