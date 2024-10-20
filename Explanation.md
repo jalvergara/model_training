@@ -56,7 +56,7 @@ Los modelos lograron las siguientes precisiones:
 * **Accuracy Gradient Boosting:** 0.76995
 * **Accuracy KNN:** 0.72995
 
-El clasificador XGBoost logró la mayor precisión **(0,78515)**, lo que lo convierte en el modelo con mejor rendimiento.
+El clasificador *XGBoost* logró la mayor precisión **(0,78515)**, lo que lo convierte en el modelo con mejor rendimiento.
 
 ## Conclusion.
 
