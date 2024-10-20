@@ -11,8 +11,9 @@ El objetivo de este proyecto es desarrollar un modelo de machine learning que pe
 ### **Carga y Análisis de los Datos**
 - Se cargaron los datos del archivo `MLA_100k.jsonlines` y se realizó una revisión inicial para identificar tipos de datos, columnas con valores nulos y la estructura general de la información.
 - Se identificaron varias columnas que contenían datos en formato JSON, las cuales fueron desempacadas para obtener información adicional.
+- Para algunas columnas que contenían arreglos, dado que era muy difícil de convertir en un formato estandar que se le pudiera entregar a un modelo, se optó por agregar la longitud de esas listas.  
+- También se añadieron columnas calculadas, como el **tiempo de vida de la publicación** y la **última actualización**. Además, se agregaron columnas relacionadas al tamaño de las imágenes con base al contenido de la lista en la columna **pictures**.
 - Se detectaron y eliminaron varias columnas con valores no informativos, como aquellas con un solo valor único o con más del 90% de valores nulos.
-- También se añadieron columnas calculadas, como el **tiempo de vida de la publicación** y la **última actualización**.
 - Finalmente, se guardó el conjunto de datos procesado en `MLA_100k_cleaned.csv` ✅.
 
 ---
@@ -22,12 +23,22 @@ El objetivo de este proyecto es desarrollar un modelo de machine learning que pe
 ### **Selección de Variables**
 Para entrenar el modelo, se eligieron las siguientes variables del conjunto de datos limpio:
 - `base_price`
+- `non_mercado_pago_payment_methods`
+- `seller_id`
+- `variations`
 - `price`
-- `last_update`
-- `accepts_mercadopago`
+- `attributes`
+- `pictures`
 - `initial_quantity`
 - `sold_quantity`
 - `available_quantity`
+- `seller_address_longitude`
+- `seller_address_id`
+- `seller_address_latitude`
+- `pixels`
+- `max_pixels`
+- `lifetime publication`
+- `last_update`
 
 La variable objetivo (**target**) es la columna `condition`, que indica si un producto es nuevo o usado. Esta se transformó en binaria, asignando **1** a los productos **nuevos** y **0** a los **usados**.
 
@@ -58,12 +69,12 @@ Para cada modelo, se midieron las siguientes métricas:
 
 ### **Comparación de Métricas**
 
-- Se graficaron las métricas para una mejor comparación. En la primera gráfica, se compararon **Accuracy** y **AUC-ROC**. En la segunda gráfica, se compararon **Precisión, Recall y F1-Score** para las clases positiva (nuevo) y negativa (usado).
+- Se graficaron las métricas para una mejor comparación. En la primera gráfica, se compararon **Accuracy** y **AUC-ROC**. En la segunda gráfica, se compararon **Precisión, Recall y F1-Score** para las clases positiva (nuevo) y negativa (usado). Puedes indagar en los resultados visitando el notebook [002_model_training.ipynb](./notebooks/002_model_training.ipynb).
 
 ### **Mejor Modelo**
-- **🚀 XGBoost** fue el modelo que obtuvo el mejor desempeño global, con la mayor **exactitud (0.8653)** y un **AUC-ROC de 0.7839**.
+- **🚀 XGBoost** fue el modelo que obtuvo el mejor desempeño global, con la mayor **exactitud (0.8824)** y un **AUC-ROC de 0.9508**.
 - También destacó en la predicción de la clase positiva (nuevos), obteniendo un **F1-Score de 0.7366** y un **Recall** alto, lo cual es crucial en problemas donde es más importante identificar correctamente los productos nuevos.
-- Aunque **🌟 Gradient Boosting** tuvo un rendimiento competitivo, **XGBoost** lo superó en la mayoría de las métricas.
+- Aunque **🌲 Random Forest** tuvo un rendimiento competitivo, **XGBoost** lo superó en la mayoría de las métricas.
 
 ---
 
